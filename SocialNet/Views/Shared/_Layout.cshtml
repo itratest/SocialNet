@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header>
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#">Социальная сеть</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><a href="@Url.Action("About", "Home")"><i class="icon-home icon-white"></i>&nbsp;Информация о себе </a></li>
+                            <li class="divider-vertical"></li>
+                            <li class="active"><a href="#"><i class="icon-file icon-white"></i>События</a></li>
+                            <li class="divider-vertical"></li>
+                            <li><a href="@Url.Action("Index", "Home")"><i class="icon-envelope icon-white"></i>&nbsp;Новости</a></li>
+                            <li class="divider-vertical"></li>
+                            <li><a href="#"><i class="icon-signal icon-white"></i>Люди</a></li>
+                            <li class="divider-vertical"></li>
+                            <li><a href="@Url.Action("Contact", "Home")"><i class="icon-lock icon-white"></i>&nbsp;Настройки</a></li>
+                            <li class="divider-vertical"></li>
+                        </ul>
+                        <div class="btn-group pull-right">
+                            <section id="login">
+                                @Html.Partial("_LoginPartial")
+                            </section>
+                        </div>
+                    </div>
+                    <!--/.nav-collapse////////////////////////////////////////// -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "wBaH";
+}<script>
+     $(document).ready(function () {
+         $('label.tree-toggler').click(function () {
+             $(this).parent().children('ul.tree').toggle(300);
+         });
+     });
+</script>
+<div class="well" style="width:300px; padding: 8px 0;">
+    <div style="overflow-y: scroll; overflow-x: hidden; height: 500px;">
+        <ul class="nav nav-list">
+            <li><label class="tree-toggler nav-header">Header 1</label>
+                <ul class="nav nav-list tree">
+                    <li><a href="#">Информация о себе</a></li>
+                    <li><a href="#">События</a></li>
+                    <li><a href="#">Новости</a></li>
+                    <li><a href="#">Люди</a></li>
+                    <li><a href="#">Настроийки</a></li>
+                </ul>
+            </li>            
+        </ul>
+    </div>
+</div>
