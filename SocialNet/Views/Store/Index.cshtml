@@ -1,0 +1,22 @@
+﻿@model List<SocialNet.Models.UsersDataModel>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @{
+        foreach(SocialNet.Models.UsersDataModel user in Model)
+        {
+                <div>
+                    @user.AboutMyself;        
+                 </div>
+        } 
+    }
+
+</body>
+</html>

@@ -16,6 +16,8 @@ namespace SocialNet.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+
+        public DbSet<UsersDataModel> UsersDataModels { get; set; }
     }
 
     [Table("UserProfile")]

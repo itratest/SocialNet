@@ -1,0 +1,85 @@
+﻿@model SocialNet.Models.UsersDataModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>UsersDataModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nik)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nik)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserEmailAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserEmailAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Sex)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Sex)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Contacts)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Contacts)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BirthDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BirthDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Password)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Password)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AboutMyself)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AboutMyself)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

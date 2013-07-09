@@ -27,7 +27,7 @@
                             <li class="divider-vertical"></li>
                             <li><a href="@Url.Action("Index", "Home")"><i class="icon-envelope icon-white"></i>&nbsp;Новости</a></li>
                             <li class="divider-vertical"></li>
-                            <li><a href="#"><i class="icon-signal icon-white"></i>Люди</a></li>
+                            <li><a href="@Url.Action("Index", "User")"><i class="icon-signal icon-white"></i>Люди</a></li>
                             <li class="divider-vertical"></li>
                             <li><a href="@Url.Action("Contact", "Home")"><i class="icon-lock icon-white"></i>&nbsp;Настройки</a></li>
                             <li class="divider-vertical"></li>
@@ -45,16 +45,12 @@
     </header>
     <div id="body">
         @RenderSection("featured", required: false)
-        <section class="content-wrapper main-content clear-fix">
+        <section class="span21">
             @RenderBody()
         </section>
     </div>
     <footer>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
-            </div>
-        </div>
+
     </footer>
 
     @Scripts.Render("~/bundles/jquery")
