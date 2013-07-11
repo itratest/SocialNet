@@ -9,13 +9,13 @@ namespace SocialNet.Controllers
 {
     public class StoreController : Controller
     {
-        SocialNetEntities storeDB = new SocialNetEntities();
+        UsersContext storeDB = new UsersContext();
         //
         // GET: /Store/
 
         public ActionResult Index()
         {
-            var data = storeDB.UsersData.ToList();
+            var data = storeDB.UserData.ToList();
             return View(data);
         }
         //

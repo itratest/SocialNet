@@ -172,7 +172,6 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Cities.cs" />
     <Compile Include="Models\SampleData.cs" />
-    <Compile Include="Models\SocialNetEntities.cs" />
     <Compile Include="Models\UsersDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -297,7 +296,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Store\Change.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />

@@ -6,9 +6,9 @@ using System.Data.Entity;
 
 namespace SocialNet.Models
 {
-    public class SampleData : DropCreateDatabaseIfModelChanges<SocialNetEntities>
+    public class SampleData : DropCreateDatabaseIfModelChanges<UsersContext>
     {
-        protected override void Seed(SocialNetEntities context)
+        protected override void Seed(UsersContext context)
         {
             var cities = new List<Cities>
             {
@@ -25,7 +25,7 @@ namespace SocialNet.Models
                         Nik = "Kusya",
                         City = cities.Single(a => a.Name == "Барановичи")                    
                     }                    
-                }.ForEach(a => context.UsersData.Add(a));
+                }.ForEach(a => context.UserData.Add(a));
         }
     }
 }

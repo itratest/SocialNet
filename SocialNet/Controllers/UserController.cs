@@ -18,7 +18,8 @@ namespace SocialNet.Controllers
 
         public ActionResult Index()
         {
-            return View(db.UsersDataModels.ToList());
+            var data = db.UserData.Include(a => a.Name).Include(a => a.FirstName).Include(a=>a.City);
+            return View(data.ToList());
         }
 
         //
@@ -26,7 +27,7 @@ namespace SocialNet.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            UsersDataModel usersdatamodel = db.UsersDataModels.Find(id);
+            UsersDataModel usersdatamodel = db.UserData.Find(id);
             if (usersdatamodel == null)
             {
                 return HttpNotFound();
@@ -39,6 +40,7 @@ namespace SocialNet.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.CityID = new SelectList(db.Cities, "GenreId", "Name");
             return View();
         }
 
@@ -50,7 +52,7 @@ namespace SocialNet.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.UsersDataModels.Add(usersdatamodel);
+                db.UserData.Add(usersdatamodel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -63,7 +65,7 @@ namespace SocialNet.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            UsersDataModel usersdatamodel = db.UsersDataModels.Find(id);
+            UsersDataModel usersdatamodel = db.UserData.Find(id);
             if (usersdatamodel == null)
             {
                 return HttpNotFound();
@@ -91,7 +93,7 @@ namespace SocialNet.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            UsersDataModel usersdatamodel = db.UsersDataModels.Find(id);
+            UsersDataModel usersdatamodel = db.UserData.Find(id);
             if (usersdatamodel == null)
             {
                 return HttpNotFound();
@@ -105,8 +107,8 @@ namespace SocialNet.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            UsersDataModel usersdatamodel = db.UsersDataModels.Find(id);
-            db.UsersDataModels.Remove(usersdatamodel);
+            UsersDataModel usersdatamodel = db.UserData.Find(id);
+            db.UserData.Remove(usersdatamodel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

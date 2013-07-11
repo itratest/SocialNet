@@ -1,24 +1,24 @@
 ﻿@{
     ViewBag.Title = "wBaH";
-}<script>
-     $(document).ready(function () {
-         $('label.tree-toggler').click(function () {
-             $(this).parent().children('ul.tree').toggle(300);
-         });
-     });
+}
+<script>
+    $(document).ready(function () {
+        $('label.tree-toggler').click(function () {
+            $(this).parent().children('ul.tree').toggle(300);
+        });
+    });
 </script>
-<div class="well" style="width:300px; padding: 8px 0;">
-    <div style="overflow-y: scroll; overflow-x: hidden; height: 500px;">
-        <ul class="nav nav-list">
-            <li><label class="tree-toggler nav-header">Header 1</label>
-                <ul class="nav nav-list tree">
-                    <li><a href="#">Информация о себе</a></li>
-                    <li><a href="#">События</a></li>
-                    <li><a href="#">Новости</a></li>
-                    <li><a href="#">Люди</a></li>
-                    <li><a href="#">Настроийки</a></li>
-                </ul>
-            </li>            
-        </ul>
+<div class="" id="loginModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>Have an Account?</h3>
+    </div>
+    <div class="modal-body">
+        <div class="well">
+            <ul class="nav nav-tabs">
+                <li class="active"><a  href="@Url.Action("Login", "Account")" data-toggle="tab">Login</></li>
+                <li><a href="@Url.Action("Register", "Account")" data-toggle="tab">Create Account</a></li>
+            </ul>
+        </div>
     </div>
 </div>
