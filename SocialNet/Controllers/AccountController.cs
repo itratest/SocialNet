@@ -10,6 +10,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using SocialNet.Filters;
 using SocialNet.Models;
+using Postal;
 
 namespace SocialNet.Controllers
 {
@@ -39,7 +40,6 @@ namespace SocialNet.Controllers
             {
                 return RedirectToLocal(returnUrl);
             }
-
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
@@ -76,12 +76,24 @@ namespace SocialNet.Controllers
         {
             if (ModelState.IsValid)
             {
+                string confirmationToken;
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    confirmationToken =
+                        WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { Email = model.Email }, true);
+
+                    dynamic email = new Email("ConfirmEmail");
+                    email.To = model.Email;
+                    email.UserName = model.UserName;
+                    email.ConfirmationToken = confirmationToken;
+                    email.Send();
+
+                    Roles.AddUserToRole(model.UserName, "Simple User");
+
+                    return RedirectToAction("RegisterStepTwo", "Account");
+                    //WebSecurity.Login(model.UserName, model.Password);
+                    //return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
                 {
@@ -92,7 +104,36 @@ namespace SocialNet.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+        [AllowAnonymous]
+        public ActionResult RegisterStepTwo()
+        {
+            return View();
+        }
 
+        [AllowAnonymous]
+        public ActionResult RegisterConfirmation(string Id)
+        {
+            if (WebSecurity.ConfirmAccount(Id))
+            {
+                int i = WebSecurity.CurrentUserId;
+
+
+                return RedirectToAction("ConfirmationSuccess");
+            }
+            return RedirectToAction("ConfirmationFailure");
+        }
+
+        [AllowAnonymous]
+        public ActionResult ConfirmationSuccess()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult ConfirmationFailure()
+        {
+            return View();
+        }
         //
         // POST: /Account/Disassociate
 
