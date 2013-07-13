@@ -81,7 +81,10 @@ namespace SocialNet.Controllers
                 try
                 {
                     confirmationToken =
-                        WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { Email = model.Email }, true);
+                        WebSecurity.CreateUserAndAccount(
+                        model.UserName, 
+                        model.Password, 
+                        new { Email = model.Email }, true);
 
                     dynamic email = new Email("ConfirmEmail");
                     email.To = model.Email;

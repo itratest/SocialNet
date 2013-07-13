@@ -11,9 +11,17 @@
 <div class="" id="loginModal">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3> Добро пожаловать на наш замечательный сайт! Если у вас есть аккаут - войдите, иначе - зарегестрируйтесь</h3>
+        <h3> Добро пожаловать на наш замечательный сайт! Если у вас есть аккаут - <a  href="@Url.Action("Login", "Account")">войдите</a>, 
+            иначе -  <a  href="@Url.Action("Register", "Account")">зарегестрируйтесь</a></h3>
     </div>
-    @Url.Action("Login", "Account")
-    @Url.Action("Register", "Account")
+    <div class="control-group">
+                                <!-- Button -->
+                                <div class="controls">
+                                    <button class="btn btn-success" type="submit" value="Register" >Login</button>
+                                </div>
+                            </div>
+    <a  href="@Url.Action("Login", "Account")">Войти</a>
+    <a  href="@Url.Action("Register", "Account")">Создать аккаунт</a>
+                
         
 </div>
